@@ -18,7 +18,8 @@ namespace ConsoleCalc
 
             Console.WriteLine("░▒▓~Калькулятор~▓▒░");
 
-            if (paramsAreGiven) {
+            if (paramsAreGiven)
+            {
                 operation = args[0];
                 operands[0] = Convert.ToInt32(args[1]);
                 operands[1] = Convert.ToInt32(args[2]);
@@ -40,8 +41,12 @@ namespace ConsoleCalc
 
             switch (operation)
             {
-                case "sum": result = calc.Add(operands[0], operands[1]);break;
-                case "sub": result = calc.Sub(operands[0], operands[1]);break;
+                case "sum": result = calc.Add(operands[0], operands[1]); break;
+                case "sub": result = calc.Sub(operands[0], operands[1]); break;
+                case "mul": result = calc.Mul(operands[0], operands[1]); break;
+                case "div": result = calc.Div(operands[0], operands[1]); break;
+                case "max": result = calc.Max(operands[0], operands[1]); break;
+                case "min": result = calc.Min(operands[0], operands[1]); break;
             }
 
             Console.WriteLine($"Вот ваш ответ, сударь: {result}!");
