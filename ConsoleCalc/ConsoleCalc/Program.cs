@@ -13,32 +13,35 @@ namespace ConsoleCalc
             Calc calc = new Calc();
             bool paramsAreGiven = (args.Length >= 3 ? true : false);
             string operation = "none";
-            int[] operands = new int[2];
-            int result = 0;
+            double[] operands = new double[2];
+            double result = 0;
 
             Console.WriteLine("░▒▓~Калькулятор~▓▒░");
 
+            // obtain operands
             if (paramsAreGiven)
             {
                 operation = args[0];
-                operands[0] = Convert.ToInt32(args[1]);
-                operands[1] = Convert.ToInt32(args[2]);
+                operands[0] = Convert.ToDouble(args[1]);
+                operands[1] = Convert.ToDouble(args[2]);
                 Console.WriteLine($"Переданные параметры: operation={operation} x={operands[0]} y={operands[1]}");
             }
             else
             {
+                // TODO: check inputs
                 Console.WriteLine("Достопочтенный сударь, соблаговолите ввести название операции:");
                 Console.Write("► ");
                 operation = Console.ReadLine();
                 Console.WriteLine("Ваша операция, уважаемый, безупречна как всегда.");
                 Console.WriteLine("Теперь введите первый операнд:");
                 Console.Write("► ");
-                operands[0] = Convert.ToInt32(Console.ReadLine());
+                operands[0] = Convert.ToDouble(Console.ReadLine());
                 Console.WriteLine("Теперь введите второй операнд:");
                 Console.Write("► ");
-                operands[1] = Convert.ToInt32(Console.ReadLine());
+                operands[1] = Convert.ToDouble(Console.ReadLine());
             }
 
+            // calculate result
             switch (operation)
             {
                 case "sum": result = calc.Add(operands[0], operands[1]); break;
@@ -49,21 +52,8 @@ namespace ConsoleCalc
                 case "min": result = calc.Min(operands[0], operands[1]); break;
             }
 
+            // out
             Console.WriteLine($"Вот ваш ответ, сударь: {result}!");
-
-            /*var oper = args[0];
-            if (oper == "sum")
-            {
-                var x = Convert.ToInt32(args[1]);
-                var y = Convert.ToInt32(args[2]);
-                var result = x + y;
-
-                Console.WriteLine($"SUM({x}, {y}) = {result}");
-            }
-            else
-            {
-                Console.WriteLine("null");
-            }*/
 
             Console.ReadKey();
         }
