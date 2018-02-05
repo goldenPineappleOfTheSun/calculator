@@ -8,6 +8,21 @@ namespace ConsoleTest
     public class CalcTest
     {
         [TestMethod]
+        public void TestAdd()
+        {
+            // Arrange
+            var calc = new Calc();
+            var x = 10;
+            var y = 5;
+
+            // Act
+            var result = calc.Add(x, y);
+
+            // Assert
+            Assert.AreEqual(15, result);
+        }
+
+        [TestMethod]
         public void TestSub()
         {
             // Arrange
@@ -17,6 +32,66 @@ namespace ConsoleTest
 
             // Act
             var result = calc.Sub(x, y);
+
+            // Assert
+            Assert.AreEqual(5, result);
+        }
+
+        [TestMethod]
+        public void TestMul()
+        {
+            // Arrange
+            var calc = new Calc();
+            var x = 10;
+            var y = 5;
+
+            // Act
+            var result = calc.Mul(x, y);
+
+            // Assert
+            Assert.AreEqual(50, result);
+        }
+
+        [TestMethod]
+        public void TestDiv()
+        {
+            // Arrange
+            var calc = new Calc();
+            var x = 10;
+            var y = 5;
+
+            // Act
+            var result = calc.Div(x, y);
+
+            // Assert
+            Assert.AreEqual(2, result);
+        }
+
+        [TestMethod]
+        public void TestMax()
+        {
+            // Arrange
+            var calc = new Calc();
+            var x = 10;
+            var y = 5;
+
+            // Act
+            var result = calc.Max(x, y);
+
+            // Assert
+            Assert.AreEqual(10, result);
+        }
+
+        [TestMethod]
+        public void TestMin()
+        {
+            // Arrange
+            var calc = new Calc();
+            var x = 10;
+            var y = 5;
+
+            // Act
+            var result = calc.Min(x, y);
 
             // Assert
             Assert.AreEqual(5, result);
