@@ -28,8 +28,7 @@ namespace ConsoleCalc
             if (y != 0)
                 return x / y;
             else
-                // TODO
-                return 0;
+                return double.NaN;
         }
 
         public double Max(double x, double y)
