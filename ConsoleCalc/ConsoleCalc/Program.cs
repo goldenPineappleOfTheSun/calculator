@@ -50,6 +50,7 @@ namespace ConsoleCalc
                 case "div": result = calc.Div(operands[0], operands[1]); break;
                 case "max": result = calc.Max(operands[0], operands[1]); break;
                 case "min": result = calc.Min(operands[0], operands[1]); break;
+                default: result = 0; break;
             }
 
             // out
