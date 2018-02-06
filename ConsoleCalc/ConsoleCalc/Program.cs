@@ -42,7 +42,10 @@ namespace ConsoleCalc
             }
 
             // calculate result
-            switch (operation)
+
+            calc.Exec(operation, operands);
+
+            /*switch (operation)
             {
                 case "sum": result = calc.Add(operands[0], operands[1]); break;
                 case "sub": result = calc.Sub(operands[0], operands[1]); break;
@@ -51,7 +54,7 @@ namespace ConsoleCalc
                 case "max": result = calc.Max(operands[0], operands[1]); break;
                 case "min": result = calc.Min(operands[0], operands[1]); break;
                 default: result = double.NaN; break;
-            }
+            }*/
 
             // out
             Console.WriteLine($"Вот ваш ответ, сударь: {result}!");

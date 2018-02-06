@@ -8,20 +8,21 @@ namespace ConsoleTest
     public class CalcTest
     {
         [TestMethod]
-        public void TestAdd()
+        public void TestSum()
         {
             // Arrange
             var calc = new Calc();
-            var x = 10;
-            var y = 5;
+            var x = 10d;
+            var y = 5d;
 
             // Act
-            var result = calc.Add(x, y);
+            var result = calc.Exec("sum", new double[] { x, y });
 
             // Assert
             Assert.AreEqual(15, result);
         }
 
+        /*
         [TestMethod]
         public void TestSub()
         {
@@ -95,6 +96,6 @@ namespace ConsoleTest
 
             // Assert
             Assert.AreEqual(5, result);
-        }
+        }*/
     }
 }
