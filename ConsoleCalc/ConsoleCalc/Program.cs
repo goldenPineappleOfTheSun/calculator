@@ -10,21 +10,52 @@ namespace ConsoleCalc
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Калькулятор");
+            Calc calc = new Calc();
+            bool paramsAreGiven = (args.Length >= 3 ? true : false);
+            string operation = "none";
+            double[] operands = new double[2];
+            double result = 0;
 
-            var oper = args[0];
-            if (oper == "sum")
+            Console.WriteLine("░▒▓~Калькулятор~▓▒░");
+
+            // obtain operands
+            if (paramsAreGiven)
             {
-                var x = Convert.ToInt32(args[1]);
-                var y = Convert.ToInt32(args[2]);
-                var result = x + y;
-
-                Console.WriteLine($"SUM({x}, {y}) = {result}");
+                operation = args[0];
+                operands[0] = Convert.ToDouble(args[1]);
+                operands[1] = Convert.ToDouble(args[2]);
+                Console.WriteLine($"Переданные параметры: operation={operation} x={operands[0]} y={operands[1]}");
             }
             else
             {
-                Console.WriteLine("null");
+                // TODO: check inputs
+                Console.WriteLine("Достопочтенный сударь, соблаговолите ввести название операции:");
+                Console.Write("► ");
+                operation = Console.ReadLine();
+                Console.WriteLine("Ваша операция, уважаемый, безупречна как всегда.");
+                Console.WriteLine("Теперь введите первый операнд:");
+                Console.Write("► ");
+                operands[0] = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Теперь введите второй операнд:");
+                Console.Write("► ");
+                operands[1] = Convert.ToDouble(Console.ReadLine());
             }
+
+            // calculate result
+            switch (operation)
+            {
+                case "sum": result = calc.Add(operands[0], operands[1]); break;
+                case "sub": result = calc.Sub(operands[0], operands[1]); break;
+                case "mul": result = calc.Mul(operands[0], operands[1]); break;
+                case "div": result = calc.Div(operands[0], operands[1]); break;
+                case "max": result = calc.Max(operands[0], operands[1]); break;
+                case "min": result = calc.Min(operands[0], operands[1]); break;
+                default: result = 0; break;
+            }
+
+            // out
+            Console.WriteLine($"Вот ваш ответ, сударь: {result}!");
+
             Console.ReadKey();
         }
     }
