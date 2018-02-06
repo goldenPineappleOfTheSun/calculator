@@ -14,7 +14,7 @@ namespace ConsoleCalc
             bool paramsAreGiven = (args.Length >= 3 ? true : false);
             string operation = "none";
             double[] operands = new double[2];
-            double result = 0;
+            double result = double.NaN;
 
             Console.WriteLine("░▒▓~Калькулятор~▓▒░");
 
@@ -50,7 +50,7 @@ namespace ConsoleCalc
                 case "div": result = calc.Div(operands[0], operands[1]); break;
                 case "max": result = calc.Max(operands[0], operands[1]); break;
                 case "min": result = calc.Min(operands[0], operands[1]); break;
-                default: result = 0; break;
+                default: result = double.NaN; break;
             }
 
             // out
