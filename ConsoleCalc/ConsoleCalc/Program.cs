@@ -35,12 +35,7 @@ namespace ConsoleCalc
                 Console.WriteLine("Ваша операция, уважаемый, безупречна как всегда.");
                 Console.WriteLine("Теперь введите операнды через запятую:");
                 Console.Write("► ");
-                Console.WriteLine("Теперь введите первый операнд:");
-                Console.Write("► ");
-                operands[0] = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine("Теперь введите второй операнд:");
-                Console.Write("► ");
-                operands[1] = Convert.ToDouble(Console.ReadLine());
+                operands = ParseOperands(Console.ReadLine());
             }
 
             // calculate result
@@ -50,6 +45,20 @@ namespace ConsoleCalc
             Console.WriteLine($"Вот ваш ответ, сударь: {result}!");
 
             Console.ReadKey();
+        }
+
+        private static double[] ParseOperands(string input)
+        {
+            string[] strings = null;
+            List<double> result = new List<double>();
+
+            input = input.Replace(" ", "");
+            strings = input.Split(',');
+
+            foreach (string item in strings)
+                result.Add(Convert.ToDouble(item));
+
+            return result.ToArray<double>();
         }
     }
 }
