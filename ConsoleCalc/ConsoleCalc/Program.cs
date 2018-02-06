@@ -33,6 +33,8 @@ namespace ConsoleCalc
                 Console.Write("► ");
                 operation = Console.ReadLine();
                 Console.WriteLine("Ваша операция, уважаемый, безупречна как всегда.");
+                Console.WriteLine("Теперь введите операнды через запятую:");
+                Console.Write("► ");
                 Console.WriteLine("Теперь введите первый операнд:");
                 Console.Write("► ");
                 operands[0] = Convert.ToDouble(Console.ReadLine());
@@ -42,19 +44,7 @@ namespace ConsoleCalc
             }
 
             // calculate result
-
-            calc.Exec(operation, operands);
-
-            /*switch (operation)
-            {
-                case "sum": result = calc.Add(operands[0], operands[1]); break;
-                case "sub": result = calc.Sub(operands[0], operands[1]); break;
-                case "mul": result = calc.Mul(operands[0], operands[1]); break;
-                case "div": result = calc.Div(operands[0], operands[1]); break;
-                case "max": result = calc.Max(operands[0], operands[1]); break;
-                case "min": result = calc.Min(operands[0], operands[1]); break;
-                default: result = double.NaN; break;
-            }*/
+            result = calc.Exec(operation, operands);
 
             // out
             Console.WriteLine($"Вот ваш ответ, сударь: {result}!");

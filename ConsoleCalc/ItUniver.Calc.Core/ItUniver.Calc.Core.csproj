@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Calc.cs" />
     <Compile Include="Interfaces\IOperation.cs" />
+    <Compile Include="Operations\DivOperation.cs" />
+    <Compile Include="Operations\MulOperation.cs" />
+    <Compile Include="Operations\SubOperation.cs" />
     <Compile Include="Operations\SumOperation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
