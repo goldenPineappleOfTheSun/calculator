@@ -58,6 +58,10 @@
       <Project>{6be0c8c3-6fb3-4a01-a98b-6957f351f21e}</Project>
       <Name>ConsoleCalc</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ItUniver.Calc.Core\ItUniver.Calc.Core.csproj">
+      <Project>{453942d1-0d28-46af-a2f3-179622b17123}</Project>
+      <Name>ItUniver.Calc.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

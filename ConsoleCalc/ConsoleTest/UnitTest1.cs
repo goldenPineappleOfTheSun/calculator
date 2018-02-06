@@ -8,15 +8,13 @@ namespace ConsoleTest
     public class CalcTest
     {
         [TestMethod]
-        public void TestAdd()
+        public void TestSum()
         {
             // Arrange
             var calc = new Calc();
-            var x = 10;
-            var y = 5;
 
             // Act
-            var result = calc.Add(x, y);
+            var result = calc.Exec("sum", new double[] { 10, 5 });
 
             // Assert
             Assert.AreEqual(15, result);
@@ -27,11 +25,11 @@ namespace ConsoleTest
         {
             // Arrange
             var calc = new Calc();
-            var x = 10;
-            var y = 5;
+            var x = 10d;
+            var y = 5d;
 
             // Act
-            var result = calc.Sub(x, y);
+            var result = calc.Exec("sub", new double[] { x, y });
 
             // Assert
             Assert.AreEqual(5, result);
@@ -42,11 +40,11 @@ namespace ConsoleTest
         {
             // Arrange
             var calc = new Calc();
-            var x = 10;
-            var y = 5;
+            var x = 10d;
+            var y = 5d;
 
             // Act
-            var result = calc.Mul(x, y);
+            var result = calc.Exec("mul", new double[] { x, y });
 
             // Assert
             Assert.AreEqual(50, result);
@@ -57,44 +55,14 @@ namespace ConsoleTest
         {
             // Arrange
             var calc = new Calc();
-            var x = 10;
-            var y = 5;
+            var x = 10d;
+            var y = 5d;
 
             // Act
-            var result = calc.Div(x, y);
+            var result = calc.Exec("div", new double[] { x, y });
 
             // Assert
             Assert.AreEqual(2, result);
-        }
-
-        [TestMethod]
-        public void TestMax()
-        {
-            // Arrange
-            var calc = new Calc();
-            var x = 10;
-            var y = 5;
-
-            // Act
-            var result = calc.Max(x, y);
-
-            // Assert
-            Assert.AreEqual(10, result);
-        }
-
-        [TestMethod]
-        public void TestMin()
-        {
-            // Arrange
-            var calc = new Calc();
-            var x = 10;
-            var y = 5;
-
-            // Act
-            var result = calc.Min(x, y);
-
-            // Assert
-            Assert.AreEqual(5, result);
         }
     }
 }
