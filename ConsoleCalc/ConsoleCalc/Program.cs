@@ -10,17 +10,11 @@ namespace ConsoleCalc
     {
         static void Main(string[] args)
         {
-            Calc calc = new Calc();
+            Calculator calc = new Calculator();
             bool paramsAreGiven = (args.Length >= 3 ? true : false);
             string operation = "none";
             double[] operands = new double[2];
             double result = double.NaN;
-
-            var ops = calc.GetOperaionNames();
-            foreach (var o in ops)
-            {
-                Console.WriteLine(o);
-            }
 
             Console.WriteLine("░▒▓~Калькулятор~▓▒░");
 

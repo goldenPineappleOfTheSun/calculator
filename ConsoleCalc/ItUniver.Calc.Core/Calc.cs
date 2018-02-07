@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleCalc
 {
-    public class Calc
+    public class Calculator
     {
         private List<IOperation> operations = new List<IOperation>();
 
-        public Calc()
+        public Calculator()
         {
             // загружаем наши операции
             LoadOperations(Assembly.GetExecutingAssembly());
