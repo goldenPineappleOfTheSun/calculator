@@ -16,6 +16,12 @@ namespace ConsoleCalc
             double[] operands = new double[2];
             double result = double.NaN;
 
+            var ops = calc.GetOperaionNames();
+            foreach (var o in ops)
+            {
+                Console.WriteLine(o);
+            }
+
             Console.WriteLine("░▒▓~Калькулятор~▓▒░");
 
             // obtain operands
