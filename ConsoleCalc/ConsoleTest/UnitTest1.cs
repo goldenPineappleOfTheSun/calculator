@@ -11,7 +11,7 @@ namespace ConsoleTest
         public void TestSum()
         {
             // Arrange
-            var calc = new Calc();
+            var calc = new Calculator();
 
             // Act
             var result = calc.Exec("sum", new double[] { 10, 5 });
@@ -24,7 +24,7 @@ namespace ConsoleTest
         public void TestSub()
         {
             // Arrange
-            var calc = new Calc();
+            var calc = new Calculator();
             var x = 10d;
             var y = 5d;
 
@@ -39,7 +39,7 @@ namespace ConsoleTest
         public void TestMul()
         {
             // Arrange
-            var calc = new Calc();
+            var calc = new Calculator();
             var x = 10d;
             var y = 5d;
 
@@ -54,7 +54,7 @@ namespace ConsoleTest
         public void TestDiv()
         {
             // Arrange
-            var calc = new Calc();
+            var calc = new Calculator();
             var x = 10d;
             var y = 5d;
 
