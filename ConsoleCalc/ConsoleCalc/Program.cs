@@ -16,9 +16,15 @@ namespace ConsoleCalc
             double[] operands = new double[2];
             double result = double.NaN;
 
+            var ops = calc.GetOperaionNames();
+            foreach (var o in ops)
+            {
+                Console.WriteLine(o);
+            }
+
             Console.WriteLine("░▒▓~Калькулятор~▓▒░");
 
-            // obtain operands
+            // получаем аргументы
             if (paramsAreGiven)
             {
                 operation = args[0];
@@ -28,7 +34,6 @@ namespace ConsoleCalc
             }
             else
             {
-                // TODO: check inputs
                 Console.WriteLine("Достопочтенный сударь, соблаговолите ввести название операции:");
                 Console.Write("► ");
                 operation = Console.ReadLine();
@@ -38,10 +43,10 @@ namespace ConsoleCalc
                 operands = ParseOperands(Console.ReadLine());
             }
 
-            // calculate result
+            // считаем
             result = calc.Exec(operation, operands);
 
-            // out
+            // выводим
             Console.WriteLine($"Вот ваш ответ, сударь: {result}!");
 
             Console.ReadKey();

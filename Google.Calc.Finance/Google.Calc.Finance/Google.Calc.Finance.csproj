@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{453942D1-0D28-46AF-A2F3-179622B17123}</ProjectGuid>
+    <ProjectGuid>{4222E0AC-ED5E-45D8-A4CB-C957390D7BEB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ItUniver.Calc.Core</RootNamespace>
-    <AssemblyName>ItUniver.Calc.Core</AssemblyName>
+    <RootNamespace>Google.Calc.Finance</RootNamespace>
+    <AssemblyName>Google.Calc.Finance</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,6 +36,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ItUniver.Calc.Core">
+      <HintPath>..\..\..\calculator\ConsoleCalc\ItUniver.Calc.Core\bin\Debug\ItUniver.Calc.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,12 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calc.cs" />
-    <Compile Include="Interfaces\IOperation.cs" />
-    <Compile Include="Operations\DivOperation.cs" />
-    <Compile Include="Operations\MulOperation.cs" />
-    <Compile Include="Operations\SubOperation.cs" />
-    <Compile Include="Operations\SumOperation.cs" />
+    <Compile Include="CreditOperation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
