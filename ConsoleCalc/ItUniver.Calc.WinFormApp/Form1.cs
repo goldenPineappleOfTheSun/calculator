@@ -25,10 +25,6 @@ namespace ItUniver.Calc.WinFormApp
             cbOperations.DataSource = calc.GetOperations();
             cbOperations.DisplayMember = "Name";
 
-            /*var operations = calc.GetOperaionNames();
-
-            cbOperations.Items.AddRange(operations);*/
-
             CheckForm();
         }
 
@@ -70,6 +66,9 @@ namespace ItUniver.Calc.WinFormApp
             var result = operation.Exec(args);
 
             tbResult.Text = $"{result}";
+
+            MyHelper.AddToHystory(operation.Name, args, result);
+            lbHystory.Items.Add($"{result}");
         }
 
         private void btnLucky_Click(object sender, EventArgs e)
