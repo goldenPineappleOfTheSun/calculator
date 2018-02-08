@@ -38,10 +38,13 @@
             this.btnLucky = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnCalc = new System.Windows.Forms.Button();
+            this.gbHystory = new System.Windows.Forms.GroupBox();
+            this.lbHystory = new System.Windows.Forms.ListBox();
             this.gbOperation.SuspendLayout();
             this.gbArgs.SuspendLayout();
             this.gbResult.SuspendLayout();
             this.gbButtons.SuspendLayout();
+            this.gbHystory.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbOperation
@@ -99,13 +102,12 @@
             // 
             // gbResult
             // 
-            this.gbResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbResult.Controls.Add(this.tbResult);
             this.gbResult.Location = new System.Drawing.Point(12, 160);
             this.gbResult.Name = "gbResult";
-            this.gbResult.Size = new System.Drawing.Size(386, 68);
+            this.gbResult.Size = new System.Drawing.Size(386, 69);
             this.gbResult.TabIndex = 0;
             this.gbResult.TabStop = false;
             this.gbResult.Text = "Результат";
@@ -130,7 +132,7 @@
             this.gbButtons.Controls.Add(this.btnLucky);
             this.gbButtons.Controls.Add(this.btnReset);
             this.gbButtons.Controls.Add(this.btnCalc);
-            this.gbButtons.Location = new System.Drawing.Point(12, 234);
+            this.gbButtons.Location = new System.Drawing.Point(12, 367);
             this.gbButtons.Name = "gbButtons";
             this.gbButtons.Size = new System.Drawing.Size(386, 67);
             this.gbButtons.TabIndex = 1;
@@ -172,14 +174,41 @@
             this.btnCalc.UseVisualStyleBackColor = true;
             this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
+            // gbHystory
+            // 
+            this.gbHystory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbHystory.Controls.Add(this.lbHystory);
+            this.gbHystory.Location = new System.Drawing.Point(12, 237);
+            this.gbHystory.Margin = new System.Windows.Forms.Padding(5);
+            this.gbHystory.Name = "gbHystory";
+            this.gbHystory.Padding = new System.Windows.Forms.Padding(10);
+            this.gbHystory.Size = new System.Drawing.Size(386, 122);
+            this.gbHystory.TabIndex = 0;
+            this.gbHystory.TabStop = false;
+            this.gbHystory.Text = "История";
+            // 
+            // lbHystory
+            // 
+            this.lbHystory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbHystory.FormattingEnabled = true;
+            this.lbHystory.Location = new System.Drawing.Point(14, 27);
+            this.lbHystory.Name = "lbHystory";
+            this.lbHystory.Size = new System.Drawing.Size(359, 82);
+            this.lbHystory.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 313);
+            this.ClientSize = new System.Drawing.Size(412, 446);
             this.Controls.Add(this.gbButtons);
             this.Controls.Add(this.gbResult);
             this.Controls.Add(this.gbArgs);
+            this.Controls.Add(this.gbHystory);
             this.Controls.Add(this.gbOperation);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -192,6 +221,7 @@
             this.gbResult.ResumeLayout(false);
             this.gbResult.PerformLayout();
             this.gbButtons.ResumeLayout(false);
+            this.gbHystory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -208,6 +238,8 @@
         private System.Windows.Forms.Button btnLucky;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnCalc;
+        private System.Windows.Forms.GroupBox gbHystory;
+        private System.Windows.Forms.ListBox lbHystory;
     }
 }
 

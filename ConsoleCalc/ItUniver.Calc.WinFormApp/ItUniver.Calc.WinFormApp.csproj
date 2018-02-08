@@ -52,6 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\ItUniver.Calc.Core\ItUniver.Calc.Core.csproj">
       <Project>{453942d1-0d28-46af-a2f3-179622b17123}</Project>
       <Name>ItUniver.Calc.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ItUniver.Calc.DB\ItUniver.Calc.DB.csproj">
+      <Project>{077e62f5-4e77-4e92-9109-4c19b8a1f71f}</Project>
+      <Name>ItUniver.Calc.DB</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
