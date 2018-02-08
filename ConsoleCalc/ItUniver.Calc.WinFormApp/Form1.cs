@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ItUniver.Calc.Core;
 using ConsoleCalc;
 using System.Text.RegularExpressions;
+using ItUniver.Calc.Core.Interfaces;
 
 namespace ItUniver.Calc.WinFormApp
 {
@@ -21,9 +22,12 @@ namespace ItUniver.Calc.WinFormApp
         {
             InitializeComponent();
 
-            var operations = calc.GetOperaionNames();
+            cbOperations.DataSource = calc.GetOperations();
+            cbOperations.DisplayMember = "Name";
 
-            cbOperations.Items.AddRange(operations);
+            /*var operations = calc.GetOperaionNames();
+
+            cbOperations.Items.AddRange(operations);*/
 
             CheckForm();
         }
@@ -55,10 +59,15 @@ namespace ItUniver.Calc.WinFormApp
         /// </summary>
         private void CalculateForm()
         {
-            string operation = $"{cbOperations.SelectedItem}";
-            double[] args = ParseArguments(tbArgs.Text);
+            //string operation = $"{cbOperations.SelectedItem}";
 
-            var result = calc.Exec(operation, args);
+            var operation = cbOperations.SelectedItem as IOperation;
+            var args = ParseArguments(tbArgs.Text);
+
+            if (operation == null)
+                return;
+
+            var result = operation.Exec(args);
 
             tbResult.Text = $"{result}";
         }

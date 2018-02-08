@@ -32,6 +32,11 @@ namespace ConsoleCalc
             }
         }
 
+        public List<IOperation> GetOperations()
+        {
+            return operations;
+        }
+
         public string[] GetOperaionNames()
         {
             return operations.Select(o => o.Name).ToArray<string>();
@@ -72,11 +77,11 @@ namespace ConsoleCalc
                     // пытаемся превратить его в операцию
                     var operation = obj as IOperation;
 
-                    if (operation == null)
-                        return;
-
-                    // добавляем в список операций
-                    operations.Add(operation);
+                    if (operation != null)
+                    {
+                        // добавляем в список операций
+                        operations.Add(operation);
+                    }
                 }
             }
         }
