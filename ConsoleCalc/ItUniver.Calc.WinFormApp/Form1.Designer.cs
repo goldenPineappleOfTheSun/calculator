@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbOperation = new System.Windows.Forms.GroupBox();
             this.cbOperations = new System.Windows.Forms.ComboBox();
             this.gbArgs = new System.Windows.Forms.GroupBox();
@@ -38,13 +39,14 @@
             this.btnLucky = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnCalc = new System.Windows.Forms.Button();
-            this.gbHystory = new System.Windows.Forms.GroupBox();
-            this.lbHystory = new System.Windows.Forms.ListBox();
+            this.gbHistory = new System.Windows.Forms.GroupBox();
+            this.ArgsCalcTimer = new System.Windows.Forms.Timer(this.components);
+            this.cbHistory = new System.Windows.Forms.ComboBox();
             this.gbOperation.SuspendLayout();
             this.gbArgs.SuspendLayout();
             this.gbResult.SuspendLayout();
             this.gbButtons.SuspendLayout();
-            this.gbHystory.SuspendLayout();
+            this.gbHistory.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbOperation
@@ -174,31 +176,32 @@
             this.btnCalc.UseVisualStyleBackColor = true;
             this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
-            // gbHystory
+            // gbHistory
             // 
-            this.gbHystory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbHystory.Controls.Add(this.lbHystory);
-            this.gbHystory.Location = new System.Drawing.Point(12, 237);
-            this.gbHystory.Margin = new System.Windows.Forms.Padding(5);
-            this.gbHystory.Name = "gbHystory";
-            this.gbHystory.Padding = new System.Windows.Forms.Padding(10);
-            this.gbHystory.Size = new System.Drawing.Size(386, 122);
-            this.gbHystory.TabIndex = 0;
-            this.gbHystory.TabStop = false;
-            this.gbHystory.Text = "История";
+            this.gbHistory.Controls.Add(this.cbHistory);
+            this.gbHistory.Location = new System.Drawing.Point(12, 237);
+            this.gbHistory.Margin = new System.Windows.Forms.Padding(5);
+            this.gbHistory.Name = "gbHistory";
+            this.gbHistory.Padding = new System.Windows.Forms.Padding(10);
+            this.gbHistory.Size = new System.Drawing.Size(386, 64);
+            this.gbHistory.TabIndex = 0;
+            this.gbHistory.TabStop = false;
+            this.gbHistory.Text = "История";
             // 
-            // lbHystory
+            // ArgsCalcTimer
             // 
-            this.lbHystory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbHystory.FormattingEnabled = true;
-            this.lbHystory.Location = new System.Drawing.Point(14, 27);
-            this.lbHystory.Name = "lbHystory";
-            this.lbHystory.Size = new System.Drawing.Size(359, 82);
-            this.lbHystory.TabIndex = 0;
+            this.ArgsCalcTimer.Interval = 1000;
+            this.ArgsCalcTimer.Tick += new System.EventHandler(this.ArgsCalcTimer_Tick);
+            // 
+            // cbHistory
+            // 
+            this.cbHistory.FormattingEnabled = true;
+            this.cbHistory.Location = new System.Drawing.Point(14, 26);
+            this.cbHistory.Name = "cbHistory";
+            this.cbHistory.Size = new System.Drawing.Size(359, 21);
+            this.cbHistory.TabIndex = 0;
             // 
             // Form1
             // 
@@ -208,7 +211,7 @@
             this.Controls.Add(this.gbButtons);
             this.Controls.Add(this.gbResult);
             this.Controls.Add(this.gbArgs);
-            this.Controls.Add(this.gbHystory);
+            this.Controls.Add(this.gbHistory);
             this.Controls.Add(this.gbOperation);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -221,7 +224,7 @@
             this.gbResult.ResumeLayout(false);
             this.gbResult.PerformLayout();
             this.gbButtons.ResumeLayout(false);
-            this.gbHystory.ResumeLayout(false);
+            this.gbHistory.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -238,8 +241,9 @@
         private System.Windows.Forms.Button btnLucky;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnCalc;
-        private System.Windows.Forms.GroupBox gbHystory;
-        private System.Windows.Forms.ListBox lbHystory;
+        private System.Windows.Forms.GroupBox gbHistory;
+        private System.Windows.Forms.Timer ArgsCalcTimer;
+        private System.Windows.Forms.ComboBox cbHistory;
     }
 }
 

@@ -11,6 +11,7 @@ using ItUniver.Calc.Core;
 using ConsoleCalc;
 using System.Text.RegularExpressions;
 using ItUniver.Calc.Core.Interfaces;
+using ItUniver.Calc.DB.Models;
 
 namespace ItUniver.Calc.WinFormApp
 {
@@ -25,7 +26,38 @@ namespace ItUniver.Calc.WinFormApp
             cbOperations.DataSource = calc.GetOperations();
             cbOperations.DisplayMember = "Name";
 
+            /*cbHistory.DataSource = HistoryItems;
+            cbHistory.DisplayMember = "Result";*/
+
             CheckForm();
+        }
+
+        /// <summary>
+        /// Считает результат и вносит его в Оутпут
+        /// </summary>
+        private void CalculateForm()
+        {
+            bool argsAreValid = ValidateArgs(tbArgs.Text);
+
+            if (!argsAreValid)
+                return;
+
+            var operation = cbOperations.SelectedItem as IOperation;
+            var args = ParseArguments(tbArgs.Text);
+
+            if (operation == null)
+                return;
+
+            var result = operation.Exec(args);
+
+            tbResult.Text = $"{result}";
+
+            MyHelper.AddToHystory(operation.Name, args, result);
+
+            cbHistory.Items.Clear();
+            cbHistory.Items.AddRange(
+                MyHelper.GetItems().Select(i => (object)i.Result).ToArray()
+                );
         }
 
         private void btnCalc_Click(object sender, EventArgs e)
@@ -41,34 +73,13 @@ namespace ItUniver.Calc.WinFormApp
 
         private double[] ParseArguments(string text)
         {
-            var result = new double[]{ };
+            var result = new double[] { };
 
             result = text.Trim().Split(' ')
                 .Select(str => Convert.ToDouble(str))
                 .ToArray();
 
             return result;
-        }
-
-        /// <summary>
-        /// Считает результат и вносит его в Оутпут
-        /// </summary>
-        private void CalculateForm()
-        {
-            //string operation = $"{cbOperations.SelectedItem}";
-
-            var operation = cbOperations.SelectedItem as IOperation;
-            var args = ParseArguments(tbArgs.Text);
-
-            if (operation == null)
-                return;
-
-            var result = operation.Exec(args);
-
-            tbResult.Text = $"{result}";
-
-            MyHelper.AddToHystory(operation.Name, args, result);
-            lbHystory.Items.Add($"{result}");
         }
 
         private void btnLucky_Click(object sender, EventArgs e)
@@ -123,11 +134,20 @@ namespace ItUniver.Calc.WinFormApp
 
         private void tbArgs_TextChanged(object sender, EventArgs e)
         {
+            ArgsCalcTimer.Start();
+
             CheckForm();
         }
 
         private void tbResult_TextChanged(object sender, EventArgs e)
         {
+            CheckForm();
+        }
+
+        private void ArgsCalcTimer_Tick(object sender, EventArgs e)
+        {
+            ArgsCalcTimer.Stop();
+            CalculateForm();
             CheckForm();
         }
     }
