@@ -11,6 +11,7 @@ using ItUniver.Calc.Core;
 using ConsoleCalc;
 using System.Text.RegularExpressions;
 using ItUniver.Calc.Core.Interfaces;
+using ItUniver.Calc.DB.Models;
 
 namespace ItUniver.Calc.WinFormApp
 {
@@ -28,6 +29,34 @@ namespace ItUniver.Calc.WinFormApp
             CheckForm();
         }
 
+        /// <summary>
+        /// Считает результат и вносит его в Оутпут
+        /// </summary>
+        private void CalculateForm()
+        {
+            bool argsAreValid = ValidateArgs(tbArgs.Text);
+
+            if (!argsAreValid)
+                return;
+
+            var operation = cbOperations.SelectedItem as IOperation;
+            var args = ParseArguments(tbArgs.Text);
+
+            if (operation == null)
+                return;
+
+            var result = operation.Exec(args);
+
+            tbResult.Text = $"{result}";
+
+            MyHelper.AddToHystory(operation.Name, args, result);
+
+            cbHistory.Items.Clear();
+            cbHistory.Items.AddRange(
+                MyHelper.GetItems().Select(i => (object)i.Result).ToArray()
+                );
+        }
+
         private void btnCalc_Click(object sender, EventArgs e)
         {
             CalculateForm();
@@ -41,7 +70,7 @@ namespace ItUniver.Calc.WinFormApp
 
         private double[] ParseArguments(string text)
         {
-            var result = new double[]{ };
+            var result = new double[] { };
 
             result = text.Trim().Split(' ')
                 .Select(str => Convert.ToDouble(str))
@@ -125,6 +154,8 @@ namespace ItUniver.Calc.WinFormApp
 
         private void tbArgs_TextChanged(object sender, EventArgs e)
         {
+            ArgsCalcTimer.Start();
+
             CheckForm();
             ArgsChangedTimer.Stop();
             ArgsChangedTimer.Start();
