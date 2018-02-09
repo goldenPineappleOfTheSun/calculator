@@ -25,5 +25,10 @@ namespace ItUniver.Calc.DB.Repositories
         {
             throw new NotImplementedException();
         }
+
+        IList<IHistoryItem> GetAll()
+        {
+            return items;
+        }
     }
 }

@@ -14,5 +14,7 @@ namespace ItUniver.Calc.DB.Repositories
         void Save(IHistoryItem item);
 
         void Delete(long id);
+
+        IList<IHistoryItem> GetAll();
     }
 }

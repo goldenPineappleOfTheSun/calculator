@@ -10,7 +10,7 @@ namespace ItUniver.Calc.WinFormApp
 {
     public static class MyHelper
     {
-        private static IHistoryRepository Hystory = new MemoryRepository();
+        private static IHistoryRepository History = new MemoryRepository();
 
         public static void AddToHistory(string oper, double[] args, double result)
         {
@@ -20,7 +20,7 @@ namespace ItUniver.Calc.WinFormApp
             item.Result = result;
             item.ExecDate = DateTime.Now;
 
-            Hystory.Save(item);
+            History.Save(item);
         }
     }
 }
