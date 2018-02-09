@@ -26,9 +26,6 @@ namespace ItUniver.Calc.WinFormApp
             cbOperations.DataSource = calc.GetOperations();
             cbOperations.DisplayMember = "Name";
 
-            /*cbHistory.DataSource = HistoryItems;
-            cbHistory.DisplayMember = "Result";*/
-
             CheckForm();
         }
 
@@ -80,6 +77,29 @@ namespace ItUniver.Calc.WinFormApp
                 .ToArray();
 
             return result;
+        }
+
+        /// <summary>
+        /// Считает результат и вносит его в Оутпут
+        /// </summary>
+        private void CalculateForm()
+        {
+            bool argsAreValid = ValidateArgs(tbArgs.Text);
+
+            if (!argsAreValid)
+                return;
+
+            var operation = cbOperations.SelectedItem as IOperation;
+            var args = ParseArguments(tbArgs.Text);
+
+            if (operation == null)
+                return;
+
+            var result = operation.Exec(args);
+
+            tbResult.Text = $"{result}";
+            MyHelper.AddToHistory(operation.Name, args, result);
+            lbHistory.Items.Add($"{result}");
         }
 
         private void btnLucky_Click(object sender, EventArgs e)
@@ -137,6 +157,8 @@ namespace ItUniver.Calc.WinFormApp
             ArgsCalcTimer.Start();
 
             CheckForm();
+            ArgsChangedTimer.Stop();
+            ArgsChangedTimer.Start();
         }
 
         private void tbResult_TextChanged(object sender, EventArgs e)
@@ -144,11 +166,11 @@ namespace ItUniver.Calc.WinFormApp
             CheckForm();
         }
 
-        private void ArgsCalcTimer_Tick(object sender, EventArgs e)
+        private void ArgsChangedTimer_Tick(object sender, EventArgs e)
         {
-            ArgsCalcTimer.Stop();
-            CalculateForm();
+            ArgsChangedTimer.Stop();
             CheckForm();
+            CalculateForm();
         }
     }
 }

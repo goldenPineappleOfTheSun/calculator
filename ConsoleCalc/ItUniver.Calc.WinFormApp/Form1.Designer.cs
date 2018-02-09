@@ -40,8 +40,8 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnCalc = new System.Windows.Forms.Button();
             this.gbHistory = new System.Windows.Forms.GroupBox();
-            this.ArgsCalcTimer = new System.Windows.Forms.Timer(this.components);
-            this.cbHistory = new System.Windows.Forms.ComboBox();
+            this.lbHistory = new System.Windows.Forms.ListBox();
+            this.ArgsChangedTimer = new System.Windows.Forms.Timer(this.components);
             this.gbOperation.SuspendLayout();
             this.gbArgs.SuspendLayout();
             this.gbResult.SuspendLayout();
@@ -58,7 +58,7 @@
             this.gbOperation.Margin = new System.Windows.Forms.Padding(5);
             this.gbOperation.Name = "gbOperation";
             this.gbOperation.Padding = new System.Windows.Forms.Padding(10);
-            this.gbOperation.Size = new System.Drawing.Size(386, 66);
+            this.gbOperation.Size = new System.Drawing.Size(639, 66);
             this.gbOperation.TabIndex = 0;
             this.gbOperation.TabStop = false;
             this.gbOperation.Text = "Операция";
@@ -73,7 +73,7 @@
             this.cbOperations.FormattingEnabled = true;
             this.cbOperations.Location = new System.Drawing.Point(14, 27);
             this.cbOperations.Name = "cbOperations";
-            this.cbOperations.Size = new System.Drawing.Size(359, 24);
+            this.cbOperations.Size = new System.Drawing.Size(612, 24);
             this.cbOperations.TabIndex = 0;
             this.cbOperations.SelectedIndexChanged += new System.EventHandler(this.cbOperations_SelectedIndexChanged);
             // 
@@ -84,7 +84,7 @@
             this.gbArgs.Controls.Add(this.tbArgs);
             this.gbArgs.Location = new System.Drawing.Point(12, 88);
             this.gbArgs.Name = "gbArgs";
-            this.gbArgs.Size = new System.Drawing.Size(386, 66);
+            this.gbArgs.Size = new System.Drawing.Size(639, 66);
             this.gbArgs.TabIndex = 0;
             this.gbArgs.TabStop = false;
             this.gbArgs.Text = "Аргументы";
@@ -97,7 +97,7 @@
             this.tbArgs.ForeColor = System.Drawing.Color.Black;
             this.tbArgs.Location = new System.Drawing.Point(14, 29);
             this.tbArgs.Name = "tbArgs";
-            this.tbArgs.Size = new System.Drawing.Size(359, 23);
+            this.tbArgs.Size = new System.Drawing.Size(612, 23);
             this.tbArgs.TabIndex = 0;
             this.tbArgs.Text = "123";
             this.tbArgs.TextChanged += new System.EventHandler(this.tbArgs_TextChanged);
@@ -109,7 +109,7 @@
             this.gbResult.Controls.Add(this.tbResult);
             this.gbResult.Location = new System.Drawing.Point(12, 160);
             this.gbResult.Name = "gbResult";
-            this.gbResult.Size = new System.Drawing.Size(386, 69);
+            this.gbResult.Size = new System.Drawing.Size(639, 71);
             this.gbResult.TabIndex = 0;
             this.gbResult.TabStop = false;
             this.gbResult.Text = "Результат";
@@ -123,7 +123,7 @@
             this.tbResult.Location = new System.Drawing.Point(14, 28);
             this.tbResult.Name = "tbResult";
             this.tbResult.ReadOnly = true;
-            this.tbResult.Size = new System.Drawing.Size(359, 26);
+            this.tbResult.Size = new System.Drawing.Size(612, 26);
             this.tbResult.TabIndex = 0;
             this.tbResult.TextChanged += new System.EventHandler(this.tbResult_TextChanged);
             // 
@@ -134,9 +134,9 @@
             this.gbButtons.Controls.Add(this.btnLucky);
             this.gbButtons.Controls.Add(this.btnReset);
             this.gbButtons.Controls.Add(this.btnCalc);
-            this.gbButtons.Location = new System.Drawing.Point(12, 367);
+            this.gbButtons.Location = new System.Drawing.Point(12, 419);
             this.gbButtons.Name = "gbButtons";
-            this.gbButtons.Size = new System.Drawing.Size(386, 67);
+            this.gbButtons.Size = new System.Drawing.Size(639, 67);
             this.gbButtons.TabIndex = 1;
             this.gbButtons.TabStop = false;
             // 
@@ -156,7 +156,7 @@
             // 
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReset.Location = new System.Drawing.Point(131, 19);
+            this.btnReset.Location = new System.Drawing.Point(384, 19);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(118, 32);
             this.btnReset.TabIndex = 0;
@@ -168,7 +168,7 @@
             // 
             this.btnCalc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCalc.Location = new System.Drawing.Point(255, 19);
+            this.btnCalc.Location = new System.Drawing.Point(508, 19);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(118, 32);
             this.btnCalc.TabIndex = 0;
@@ -178,36 +178,41 @@
             // 
             // gbHistory
             // 
-            this.gbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbHistory.Controls.Add(this.cbHistory);
-            this.gbHistory.Location = new System.Drawing.Point(12, 237);
+            this.gbHistory.Controls.Add(this.lbHistory);
+            this.gbHistory.Location = new System.Drawing.Point(12, 239);
             this.gbHistory.Margin = new System.Windows.Forms.Padding(5);
             this.gbHistory.Name = "gbHistory";
             this.gbHistory.Padding = new System.Windows.Forms.Padding(10);
-            this.gbHistory.Size = new System.Drawing.Size(386, 64);
+            this.gbHistory.Size = new System.Drawing.Size(639, 172);
             this.gbHistory.TabIndex = 0;
             this.gbHistory.TabStop = false;
             this.gbHistory.Text = "История";
+            this.gbHistory.UseCompatibleTextRendering = true;
             // 
-            // ArgsCalcTimer
+            // lbHistory
             // 
-            this.ArgsCalcTimer.Interval = 1000;
-            this.ArgsCalcTimer.Tick += new System.EventHandler(this.ArgsCalcTimer_Tick);
+            this.lbHistory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbHistory.FormattingEnabled = true;
+            this.lbHistory.Location = new System.Drawing.Point(14, 27);
+            this.lbHistory.Name = "lbHistory";
+            this.lbHistory.Size = new System.Drawing.Size(612, 121);
+            this.lbHistory.TabIndex = 0;
             // 
-            // cbHistory
+            // ArgsChangedTimer
             // 
-            this.cbHistory.FormattingEnabled = true;
-            this.cbHistory.Location = new System.Drawing.Point(14, 26);
-            this.cbHistory.Name = "cbHistory";
-            this.cbHistory.Size = new System.Drawing.Size(359, 21);
-            this.cbHistory.TabIndex = 0;
+            this.ArgsChangedTimer.Interval = 1000;
+            this.ArgsChangedTimer.Tick += new System.EventHandler(this.ArgsChangedTimer_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 446);
+            this.ClientSize = new System.Drawing.Size(665, 498);
             this.Controls.Add(this.gbButtons);
             this.Controls.Add(this.gbResult);
             this.Controls.Add(this.gbArgs);
@@ -242,8 +247,8 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnCalc;
         private System.Windows.Forms.GroupBox gbHistory;
-        private System.Windows.Forms.Timer ArgsCalcTimer;
-        private System.Windows.Forms.ComboBox cbHistory;
+        private System.Windows.Forms.ListBox lbHistory;
+        private System.Windows.Forms.Timer ArgsChangedTimer;
     }
 }
 
