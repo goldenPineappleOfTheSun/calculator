@@ -25,10 +25,6 @@ namespace ItUniver.Calc.WinFormApp
             cbOperations.DataSource = calc.GetOperations();
             cbOperations.DisplayMember = "Name";
 
-            /*var operations = calc.GetOperaionNames();
-
-            cbOperations.Items.AddRange(operations);*/
-
             CheckForm();
         }
 
@@ -59,7 +55,10 @@ namespace ItUniver.Calc.WinFormApp
         /// </summary>
         private void CalculateForm()
         {
-            //string operation = $"{cbOperations.SelectedItem}";
+            bool argsAreValid = ValidateArgs(tbArgs.Text);
+
+            if (!argsAreValid)
+                return;
 
             var operation = cbOperations.SelectedItem as IOperation;
             var args = ParseArguments(tbArgs.Text);
@@ -70,6 +69,8 @@ namespace ItUniver.Calc.WinFormApp
             var result = operation.Exec(args);
 
             tbResult.Text = $"{result}";
+            MyHelper.AddToHistory(operation.Name, args, result);
+            lbHistory.Items.Add($"{result}");
         }
 
         private void btnLucky_Click(object sender, EventArgs e)
@@ -125,11 +126,20 @@ namespace ItUniver.Calc.WinFormApp
         private void tbArgs_TextChanged(object sender, EventArgs e)
         {
             CheckForm();
+            ArgsChangedTimer.Stop();
+            ArgsChangedTimer.Start();
         }
 
         private void tbResult_TextChanged(object sender, EventArgs e)
         {
             CheckForm();
+        }
+
+        private void ArgsChangedTimer_Tick(object sender, EventArgs e)
+        {
+            ArgsChangedTimer.Stop();
+            CheckForm();
+            CalculateForm();
         }
     }
 }

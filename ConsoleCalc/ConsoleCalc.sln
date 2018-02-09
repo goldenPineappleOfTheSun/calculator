@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItUniver.Calc.Core", "ItUni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItUniver.Calc.WinFormApp", "ItUniver.Calc.WinFormApp\ItUniver.Calc.WinFormApp.csproj", "{EEBDF04D-D0EA-4F91-9054-2A0947558B5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItUniver.Calc.DB", "ItUniver.Calc.DB\ItUniver.Calc.DB.csproj", "{51DD247C-87C3-4352-8921-FA4CFB941B61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EEBDF04D-D0EA-4F91-9054-2A0947558B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEBDF04D-D0EA-4F91-9054-2A0947558B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEBDF04D-D0EA-4F91-9054-2A0947558B5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51DD247C-87C3-4352-8921-FA4CFB941B61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51DD247C-87C3-4352-8921-FA4CFB941B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51DD247C-87C3-4352-8921-FA4CFB941B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51DD247C-87C3-4352-8921-FA4CFB941B61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
