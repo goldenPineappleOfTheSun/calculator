@@ -29,7 +29,7 @@ namespace ItUniver.Calc.WinFormApp
             CheckForm();
         }
 
-        /// <summary>
+       /* /// <summary>
         /// Считает результат и вносит его в Оутпут
         /// </summary>
         private void CalculateForm()
@@ -55,7 +55,7 @@ namespace ItUniver.Calc.WinFormApp
             cbHistory.Items.AddRange(
                 MyHelper.GetItems().Select(i => (object)i.Result).ToArray()
                 );
-        }
+        }*/
 
         private void btnCalc_Click(object sender, EventArgs e)
         {
@@ -70,7 +70,12 @@ namespace ItUniver.Calc.WinFormApp
 
         private double[] ParseArguments(string text)
         {
-            var result = new double[] { };
+            bool argsAreValid = ValidateArgs(tbArgs.Text);
+
+            if (!argsAreValid)
+                return new double[]{};
+
+            var result = new double[]{};
 
             result = text.Trim().Split(' ')
                 .Select(str => Convert.ToDouble(str))
@@ -142,6 +147,9 @@ namespace ItUniver.Calc.WinFormApp
 
         private bool ValidateArgs(string text)
         {
+            if (text.Trim() == "")
+                return false;
+
             Regex regex = new Regex(@"[^\d ,.]");
 
             return (!regex.IsMatch(text));
@@ -154,7 +162,7 @@ namespace ItUniver.Calc.WinFormApp
 
         private void tbArgs_TextChanged(object sender, EventArgs e)
         {
-            ArgsCalcTimer.Start();
+            ArgsChangedTimer.Start();
 
             CheckForm();
             ArgsChangedTimer.Stop();

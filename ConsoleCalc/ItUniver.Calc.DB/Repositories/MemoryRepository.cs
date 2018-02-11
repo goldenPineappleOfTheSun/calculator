@@ -26,7 +26,7 @@ namespace ItUniver.Calc.DB.Repositories
             throw new NotImplementedException();
         }
 
-        IList<IHistoryItem> GetAll()
+        public IList<IHistoryItem> GetAll()
         {
             return items;
         }
