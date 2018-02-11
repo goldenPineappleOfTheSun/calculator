@@ -29,34 +29,6 @@ namespace ItUniver.Calc.WinFormApp
             CheckForm();
         }
 
-       /* /// <summary>
-        /// Считает результат и вносит его в Оутпут
-        /// </summary>
-        private void CalculateForm()
-        {
-            bool argsAreValid = ValidateArgs(tbArgs.Text);
-
-            if (!argsAreValid)
-                return;
-
-            var operation = cbOperations.SelectedItem as IOperation;
-            var args = ParseArguments(tbArgs.Text);
-
-            if (operation == null)
-                return;
-
-            var result = operation.Exec(args);
-
-            tbResult.Text = $"{result}";
-
-            MyHelper.AddToHystory(operation.Name, args, result);
-
-            cbHistory.Items.Clear();
-            cbHistory.Items.AddRange(
-                MyHelper.GetItems().Select(i => (object)i.Result).ToArray()
-                );
-        }*/
-
         private void btnCalc_Click(object sender, EventArgs e)
         {
             CalculateForm();

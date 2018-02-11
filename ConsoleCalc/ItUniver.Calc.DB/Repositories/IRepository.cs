@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ItUniver.Calc.DB.Repositories
 {
-    public interface IHistoryRepository : IRepository
+    public interface IRepository
     {
         IHistoryItem Find(long id);
 
