@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace ItUniver.Calc.DB.Models
 {
-    public interface IHistoryItem
+    interface IHistoryItem : IEntity
     {
-        long Id { get; set; }
-
-        string Operation { get; set; }
+        long Operation { get; set; }
 
         string Args { get; set; }
 

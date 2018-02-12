@@ -1,5 +1,4 @@
-﻿using ItUniver.Calc.DB.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ItUniver.Calc.DB.Repositories
 {
-    public interface IRepository
+    public interface IRepository<T>
     {
-        IHistoryItem Find(long id);
+        T Find(long id);
 
-        void Save(IHistoryItem item);
+        void Save(T item);
 
         void Delete(long id);
 
-        IList<IHistoryItem> GetAll();
+        IList<T> GetAll();
     }
 }

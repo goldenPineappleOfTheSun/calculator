@@ -7,13 +7,17 @@ using ItUniver.Calc.Core.Interfaces;
 
 namespace ItUniver.Calc.Core.Operations
 {
-    class DivOperation : IOperation
+    public class DivOperation : ISuperOperation
     {
-        int IOperation.argsCount => 2;
+        public int argsCount => 2;
 
-        string IOperation.Name => "div";
+        public string Name => "div";
 
-        double IOperation.Exec(double[] args)
+        public string Owner => "ItUniver";
+
+        public string Description => "";
+
+        public double Exec(double[] args)
         {
             return args.Aggregate((x, y) => x / y);
         }

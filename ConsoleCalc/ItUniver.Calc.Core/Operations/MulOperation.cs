@@ -13,6 +13,10 @@ namespace ItUniver.Calc.Core.Operations
 
         string IOperation.Name => "mul";
 
+        public string Owner => "ItUniver";
+
+        public string Description => "";
+
         double IOperation.Exec(double[] args)
         {
             return args.Aggregate((x, y) => x * y);

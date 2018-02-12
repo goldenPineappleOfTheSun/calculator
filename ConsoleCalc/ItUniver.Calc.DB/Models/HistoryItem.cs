@@ -10,12 +10,21 @@ namespace ItUniver.Calc.DB.Models
     {
         public long Id { get; set; }
 
-        public string Operation { get; set; }
+        public long Operation { get; set; }
 
         public string Args { get; set; }
 
         public double? Result { get; set; }
 
         public DateTime ExecDate { get; set; }
+
+        /*public HistoryItem(long id, string args, long op, double result, DateTime date)
+        {
+            Id = id;
+            Args = args;
+            Operation = op;
+            Result = result;
+            ExecDate = date;
+        }*/
     }
 }

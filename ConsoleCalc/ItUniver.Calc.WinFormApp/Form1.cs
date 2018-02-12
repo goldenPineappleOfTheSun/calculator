@@ -23,10 +23,21 @@ namespace ItUniver.Calc.WinFormApp
         {
             InitializeComponent();
 
-            cbOperations.DataSource = calc.GetOperations();
+            var operations = calc.GetOperations();
+
+            cbOperations.DataSource = operations;
             cbOperations.DisplayMember = "Name";
 
             CheckForm();
+
+            // TODO: актуализировать таблицу операций
+
+            lbHistory.Items.AddRange(MyHelper.GetAllHistoryItems().Select(h => $"{h.Operation}({h.Args}) = {h.Result} [ {h.ExecDate} ]").ToArray());
+
+            /*foreach (var item in MyHelper.GetAllOperationItems())
+            {
+                lbHistory.Items.Add(item.Name);
+            }*/
         }
 
         private void btnCalc_Click(object sender, EventArgs e)

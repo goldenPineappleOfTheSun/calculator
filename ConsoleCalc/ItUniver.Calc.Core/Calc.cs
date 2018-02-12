@@ -32,6 +32,16 @@ namespace ConsoleCalc
             }
         }
 
+        public IOperation FindOperation(string name)
+        {
+            return FindOperation(name, "unknown");
+        }
+
+        public IOperation FindOperation(string name, string owner)
+        {
+            return this.operations.Where(o => o.Name == name).FirstOrDefault();
+        }
+
         public List<IOperation> GetOperations()
         {
             return operations;
@@ -77,12 +87,14 @@ namespace ConsoleCalc
                     // пытаемся превратить его в операцию
                     var operation = obj as IOperation;
 
+                    // если удалось
                     if (operation != null)
                     {
                         // добавляем в список операций
                         operations.Add(operation);
                     }
                 }
+
             }
         }
     }

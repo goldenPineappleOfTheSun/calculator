@@ -10,17 +10,40 @@ namespace ItUniver.Calc.WinFormApp
 {
     public static class MyHelper
     {
-        private static IHistoryRepository History = new MemoryRepository();
+        private static BaseRepository<HistoryItem> History = new BaseRepository<HistoryItem>("History");
+        public static BaseRepository<OperationItem> Operations = new BaseRepository<OperationItem>("Operation");
 
         public static void AddToHistory(string oper, double[] args, double result)
         {
             var item = new HistoryItem();
+            //TODO: вычислить ид операции
+            item.Operation = 35;
             item.Args = string.Join(" ", args);
-            item.Operation = oper;
             item.Result = result;
             item.ExecDate = DateTime.Now;
 
             History.Save(item);
+        }
+
+        public static IList<HistoryItem> GetAllHistoryItems()
+        {
+            return History.GetAll().ToList();
+        }
+
+        public static void AddToOperations(string name, string owner, int argsCount)
+        {
+            var item = new OperationItem();
+            item.Id = 0;
+            item.Owner = owner;
+            item.ArgsCount = argsCount;
+            item.CreationDate = DateTime.Now;
+
+            Operations.Save(item);
+        }
+
+        public static IEnumerable<OperationItem> GetAllOperationItems()
+        {
+            return Operations.GetAll();
         }
     }
 }
