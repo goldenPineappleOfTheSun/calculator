@@ -163,5 +163,28 @@ namespace ItUniver.Calc.WinFormApp
             CheckForm();
             CalculateForm();
         }
+
+        private void cbOperations_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            // TODO: Fix
+
+            e.DrawBackground();
+
+            string text = ((ComboBox)sender).Items[e.Index].ToString();
+
+            var operation = cbOperations.Items[e.Index] as IOperation;
+
+            if (operation == null)
+                return;
+
+            var superoperation = cbOperations.Items[e.Index] as SuperOperation;
+
+            var brush = superoperation != null ? Brushes.Red : Brushes.Green;
+
+            brush = Brushes.Red;
+
+            // Draw the text    
+            e.Graphics.DrawString(text, ((Control)sender).Font, brush, e.Bounds.X, e.Bounds.Y);
+        }
     }
 }

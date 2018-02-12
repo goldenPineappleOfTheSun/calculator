@@ -69,12 +69,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbOperations.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbOperations.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbOperations.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cbOperations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbOperations.FormattingEnabled = true;
             this.cbOperations.Location = new System.Drawing.Point(14, 27);
             this.cbOperations.Name = "cbOperations";
             this.cbOperations.Size = new System.Drawing.Size(612, 24);
             this.cbOperations.TabIndex = 0;
+            this.cbOperations.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbOperations_DrawItem);
             this.cbOperations.SelectedIndexChanged += new System.EventHandler(this.cbOperations_SelectedIndexChanged);
             // 
             // gbArgs
