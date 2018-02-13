@@ -8,6 +8,8 @@ namespace ItUniver.Calc.Core.Interfaces
 {
     public abstract class SuperOperation : ISuperOperation
     {
+        public virtual long Id => 0;
+
         public virtual int argsCount => 2;
 
         public virtual string Description => "";

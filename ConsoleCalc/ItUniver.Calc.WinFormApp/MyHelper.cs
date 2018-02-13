@@ -11,13 +11,17 @@ namespace ItUniver.Calc.WinFormApp
     public static class MyHelper
     {
         private static BaseRepository<HistoryItem> History = new BaseRepository<HistoryItem>("History");
-        public static BaseRepository<OperationItem> Operations = new BaseRepository<OperationItem>("Operation");
+        public static OperationRepository Operations = new OperationRepository("Operation");
+
+        public static int FindOperationById() {
+            return 2;
+        }
 
         public static void AddToHistory(string oper, double[] args, double result)
         {
             var item = new HistoryItem();
             //TODO: вычислить ид операции
-            item.Operation = 35;
+            item.Operation = Operations.FindByName(oper).Id;
             item.Args = string.Join(" ", args);
             item.Result = result;
             item.ExecDate = DateTime.Now;

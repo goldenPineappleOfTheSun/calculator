@@ -10,6 +10,5 @@ namespace ItUniver.Calc.DB.Repositories
 {
     public class HistoryRepository : BaseRepository<HistoryItem>
     {
-        
     }
 }

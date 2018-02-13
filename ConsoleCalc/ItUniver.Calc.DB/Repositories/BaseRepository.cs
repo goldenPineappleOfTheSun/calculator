@@ -110,7 +110,7 @@ namespace ItUniver.Calc.DB.Repositories
 
         #region Работа с БД
 
-        private IEnumerable<T> ReadData()
+        protected IEnumerable<T> ReadData()
         {
             var items = new List<T>();
 
