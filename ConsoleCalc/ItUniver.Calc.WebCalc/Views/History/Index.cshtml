@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ItUniver.Calc.DB.Models.HistoryItem>
+
+@{
+    ViewBag.Title = "History";
+}
+
+<style>
+    .operation {
+        display: inline-block;
+        padding: 10px;
+    }
+
+    .result {
+        display: inline-block;
+        border: 2px solid #59bb59;
+        background: #c9fd87;
+        border-radius: 6px;
+        padding: 10px 20px;
+    }
+</style>
+
+<h2>History</h2>
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(m => item, "History")
+            </td>
+        </tr>
+    }
+
+</table>

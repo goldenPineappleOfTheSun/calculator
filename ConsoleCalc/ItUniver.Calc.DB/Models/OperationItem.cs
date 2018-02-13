@@ -17,14 +17,5 @@ namespace ItUniver.Calc.DB.Models
         public int ArgsCount { get; set; }
 
         public DateTime CreationDate { get; set; }
-
-        /*public OperationItem(long id, string name, string owner, int args, DateTime date)
-        {
-            Id = id;
-            Name = name;
-            Owner = owner;
-            ArgsCount = args;
-            CreationDate = date;
-        }*/
     }
 }

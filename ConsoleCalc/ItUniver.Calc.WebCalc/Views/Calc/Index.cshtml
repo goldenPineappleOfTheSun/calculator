@@ -1,0 +1,65 @@
+﻿@model WebCalc.Models.OperationModel
+
+@{
+    ViewBag.Title = "Калькулятор";
+}
+
+<h2>Калькулятор</h2>
+
+<form action="~/Calc/Index" method="post">
+
+</form>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group" style="display:none">
+            @Html.LabelFor(model => model.Operation, htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Operation, new { htmlAttributes = new { @class = "form-control", @id = "operation" } })
+                @Html.ValidationMessageFor(model => model.Operation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AllOperations, htmlAttributes: new { @class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownList("yourDropName", Model.AllOperations, new { @class = "form-control", @onchange = "setOperation(event)" })
+                @Html.ValidationMessageFor(model => model.AllOperations, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Args, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Args, "Args", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Args, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Result, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Result, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Result, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @MyHelper.Submit("Вычислить")
+            </div>
+        </div>
+
+        <script>
+            function setOperation(event) {
+                $('#operation')[0].value = event.target.value;
+            }
+        </script>
+    </div>
+}

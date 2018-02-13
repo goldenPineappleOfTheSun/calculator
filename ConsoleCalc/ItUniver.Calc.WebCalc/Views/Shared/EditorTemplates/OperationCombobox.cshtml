@@ -1,0 +1,12 @@
+﻿@model string[]
+
+@{
+    var items = Model ?? new string[0] { };
+}
+
+<select>
+    @foreach (var item in items)
+    {
+        <option style="width: 100%; padding: 5px; border-radius: 5px;">@Html.DisplayFor(i => item)</option>
+    }
+</select>

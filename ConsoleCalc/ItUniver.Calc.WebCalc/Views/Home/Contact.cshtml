@@ -1,7 +1,14 @@
 ﻿@{
     ViewBag.Title = "Contact";
+    var name = ViewBag.Namesfsdfsd;
+    var id = (long)ViewData["Id"];
 }
-<h2>@ViewBag.Title.</h2>
+
+@name
+
+@(id+5)
+
+<h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
 
 <address>

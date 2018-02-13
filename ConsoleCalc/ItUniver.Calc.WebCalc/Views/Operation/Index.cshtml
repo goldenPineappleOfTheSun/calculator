@@ -1,0 +1,27 @@
+﻿@model IEnumerable<ItUniver.Calc.DB.Models.OperationItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Операции</h2>
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.Name == "sum")
+                {
+                    @Html.DisplayFor(m => item, "RedOperation")
+                }
+                else
+                {
+                    @Html.DisplayFor(m => item, "Operation")
+                }
+            </td>
+        </tr>
+    }
+
+</table>
