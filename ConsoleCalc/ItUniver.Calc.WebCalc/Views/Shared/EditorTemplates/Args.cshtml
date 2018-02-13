@@ -3,7 +3,7 @@
 @{
     var items = Model ?? new double[2];
 }
-<div id="ArgsContainer" style="padding:10px;display:inline-block;background-color: orange;">
+<div id="ArgsContainer" style="padding:10px;display:inline-block;background-color: orange;" onkeydown="handleArgsKeyDown(event)">
     @foreach (var item in items)
     {
         @Html.TextBox("[]", item)
@@ -15,7 +15,14 @@
 <script>
     function AddArgs() {
         var input = $("<input type='text' name='Args[]' />");
+        
+        return $("#ArgsContainer").append(input);
+    }
 
-        $("#ArgsContainer").append(input);
+    function handleArgsKeyDown(event) {
+        if (event.keyCode == 32 && $(event.target).index() == $(event.target).parent().children().length-1) {
+            var cont = AddArgs();
+            $(cont[0]).children().last()[0].focus();
+        }
     }
 </script>
