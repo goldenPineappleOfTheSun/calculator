@@ -3,14 +3,14 @@
 @{
     var items = Model ?? new double[2];
 }
-<div id="ArgsContainer" style="padding:10px;display:inline-block;background-color: orange;" onkeydown="handleArgsKeyDown(event)">
+<div id="ArgsContainer" style="padding:10px;display:inline-block;background-color: #FF9800; border-radius: 6px;" onkeydown="handleArgsKeyDown(event)">
     @foreach (var item in items)
     {
         @Html.TextBox("[]", item)
     }
 </div>
 
-<button onclick="AddArgs(); return false;" class="btn btn-info btn-sm">+</button>
+<button onclick="AddArgs(); return false;" style="background-color: #FF9800" class="btn btn-sm">+</button>
 
 <script>
     function AddArgs() {

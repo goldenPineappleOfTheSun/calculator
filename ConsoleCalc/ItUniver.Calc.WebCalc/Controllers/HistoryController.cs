@@ -12,7 +12,7 @@ namespace WebCalc.Controllers
         // GET: History
         public ActionResult Index()
         {
-            var history = ItUniver.Calc.WinFormApp.MyHelper.GetAllHistoryItems()
+            var history = DbHelper.GetAllHistoryItems()
                 .OrderByDescending(o => o.ExecDate);
 
             return View(history);

@@ -17,7 +17,7 @@ namespace WebCalc.Controllers
 
             var operations = new List<SelectListItem>();
             operations.AddRange(
-                ItUniver.Calc.WinFormApp.MyHelper.GetAllOperationItems()
+                DbHelper.GetAllOperationItems()
                 .Select(o => new SelectListItem
                 {
                     Text = o.Name,
@@ -41,7 +41,7 @@ namespace WebCalc.Controllers
             // TODO: сохранять последнюю операцию
             var operations = new List<SelectListItem>();
             operations.AddRange(
-                ItUniver.Calc.WinFormApp.MyHelper.GetAllOperationItems()
+                DbHelper.GetAllOperationItems()
                 .Select(o => new SelectListItem
                 {
                     Text = o.Name,
@@ -53,7 +53,7 @@ namespace WebCalc.Controllers
             model.AllOperations = operations;
 
             if (model.Operation != null && model.Args != null)
-                ItUniver.Calc.WinFormApp.MyHelper.AddToHistory(model.Operation, model.Args.ToArray(), (double)model.Result);
+                DbHelper.AddToHistory(model.Operation, model.Args.ToArray(), (double)model.Result);
 
             return View(model);
         }

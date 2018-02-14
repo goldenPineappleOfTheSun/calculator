@@ -10,5 +10,8 @@ namespace ItUniver.Calc.DB.Repositories
 {
     public class HistoryRepository : BaseRepository<HistoryItem>
     {
+        public HistoryRepository(string tableName) : base(tableName)
+        {
+        }
     }
 }

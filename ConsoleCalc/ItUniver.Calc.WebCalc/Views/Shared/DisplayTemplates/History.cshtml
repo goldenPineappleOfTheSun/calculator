@@ -1,5 +1,8 @@
 ﻿@model ItUniver.Calc.DB.Models.HistoryItem
+@{
+    ItUniver.Calc.DB.Models.OperationItem operation = DbHelper.FindOperation(Model.Operation);
 
 <div class="hustory">
-    <div class="operation">@(Model.Operation) ( @(Model.Args) ) = </div><div class="result">@(Model.Result)</div>
+    <div class="operation">@(operation.Name) ( @(Model.Args) ) = </div><div class="result">@(Model.Result)</div>
 </div>
+}
