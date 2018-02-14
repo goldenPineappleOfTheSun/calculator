@@ -9,6 +9,7 @@ namespace WebCalc
 {
     public static class DbHelper
     {
+        // TODO: Актуализировать базу операций
 
         private static HistoryRepository History = new HistoryRepository("History");
         public static OperationRepository Operations = new OperationRepository("Operation");
