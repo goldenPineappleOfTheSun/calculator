@@ -12,6 +12,8 @@ namespace ItUniver.Calc.DB.Models
 
         public long Operation { get; set; }
 
+        public long UserId { get; set; }
+
         public string Args { get; set; }
 
         public double? Result { get; set; }

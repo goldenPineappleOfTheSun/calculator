@@ -10,6 +10,8 @@ namespace ItUniver.Calc.DB.Models
     {
         long Operation { get; set; }
 
+        long UserId { get; set; }
+
         string Args { get; set; }
 
         double? Result { get; set; }

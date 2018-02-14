@@ -54,7 +54,7 @@ namespace WebCalc.Controllers
             model.AllOperations = operations;
 
             if (model.Operation != null && model.Args != null)
-                DbHelper.AddToHistory(model.Operation, model.Args.ToArray(), (double)model.Result);
+                DbHelper.AddToHistory(model.Operation, User.Identity.Name, model.Args.ToArray(), (double)model.Result);
 
             return View(model);
         }

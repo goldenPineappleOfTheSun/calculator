@@ -13,12 +13,12 @@ namespace WebCalc.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private UserRepository Users { get; set; }
+        //private UserRepository Users { get; set; }
 
-        public AccountController()
+        /*public AccountController()
         {
             Users = new UserRepository("User");
-        }
+        }*/
 
         [AllowAnonymous]
         public ActionResult Login()
@@ -39,7 +39,7 @@ namespace WebCalc.Controllers
             if (!ModelState.IsValid)
                 return View();
 
-            AddToUsers(model.Login, model.Password, model.Name, model.BirthDay);
+            DbHelper.AddToUsers(model.Login, model.Password, model.Name, model.BirthDay);
             FormsAuthentication.SetAuthCookie(model.Login, true);
             return RedirectToAction("Index", "Calc");
 
@@ -53,7 +53,7 @@ namespace WebCalc.Controllers
             if (!ModelState.IsValid)
                 return View();
 
-            if (Users.Check(model.Login, model.Password))
+            if (DbHelper.Users.Check(model.Login, model.Password))
             {
                 FormsAuthentication.SetAuthCookie(model.Login, true);
                 return RedirectToAction("Index", "Calc");
@@ -68,17 +68,6 @@ namespace WebCalc.Controllers
         {
             FormsAuthentication.SignOut();
             FormsAuthentication.RedirectToLoginPage();
-        }
-
-        private void AddToUsers(string login, string password, string Name, DateTime birth)
-        {
-            var item = new UserItem();
-            item.Login = login;
-            item.Name = Name;
-            item.Password = password;
-            item.BirthDay = birth;
-
-            Users.Save(item);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace WebCalc
 
         private static HistoryRepository History = new HistoryRepository("History");
         public static OperationRepository Operations = new OperationRepository("Operation");
+        public static UserRepository Users = new UserRepository("User");
 
         public static OperationItem FindOperation(long id)
         {
@@ -24,11 +25,12 @@ namespace WebCalc
             return 2;
         }
 
-        public static void AddToHistory(string oper, double[] args, double result)
+        public static void AddToHistory(string oper, string user, double[] args, double result)
         {
             var item = new HistoryItem();
             //TODO: вычислить ид операции
             item.Operation = Operations.FindByName(oper).Id;
+            item.UserId = Users.FindByLogin(user).Id;
             item.Args = string.Join(" ", args);
             item.Result = result;
             item.ExecDate = DateTime.Now;
@@ -39,6 +41,12 @@ namespace WebCalc
         public static IList<HistoryItem> GetAllHistoryItems()
         {
             return History.GetAll().ToList();
+        }
+
+        public static IList<HistoryItem> GetUserHistoryItems(string login)
+        {
+            var user = Users.FindByLogin(login).Id;
+            return History.FindByUserLogin(user).ToList();
         }
 
         public static void AddToOperations(string name, string owner, int argsCount)
@@ -55,6 +63,17 @@ namespace WebCalc
         public static IEnumerable<OperationItem> GetAllOperationItems()
         {
             return Operations.GetAll();
+        }
+
+        public static void AddToUsers(string login, string password, string Name, DateTime birth)
+        {
+            var item = new UserItem();
+            item.Login = login;
+            item.Name = Name;
+            item.Password = password;
+            item.BirthDay = birth;
+
+            Users.Save(item);
         }
     }
 }

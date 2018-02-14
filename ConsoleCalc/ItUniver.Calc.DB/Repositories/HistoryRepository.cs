@@ -13,5 +13,12 @@ namespace ItUniver.Calc.DB.Repositories
         public HistoryRepository(string tableName) : base(tableName)
         {
         }
+
+        public IEnumerable<HistoryItem> FindByUserLogin(long user)
+        {
+            var result = base.ReadData($"UserId='{user}'");
+
+            return result;
+        }
     }
 }

@@ -117,6 +117,8 @@ namespace ItUniver.Calc.DB.Repositories
 
         protected IEnumerable<T> ReadData(string where)
         {
+            // TODO: SQL injections
+
             var items = new List<T>();
 
             var queryString = $"SELECT * FROM [dbo].[{tableName}]" + (where == null ? "" : $" WHERE {where}") ;

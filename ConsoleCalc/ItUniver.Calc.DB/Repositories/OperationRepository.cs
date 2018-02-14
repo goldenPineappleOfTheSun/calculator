@@ -18,7 +18,7 @@ namespace ItUniver.Calc.DB.Repositories
         {
             var result = base.ReadData($"Name='{name}'");
 
-            return result.First();
+            return result.FirstOrDefault();
         }
     }
 }

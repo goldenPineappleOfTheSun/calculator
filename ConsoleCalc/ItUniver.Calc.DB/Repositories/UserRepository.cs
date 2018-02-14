@@ -34,9 +34,12 @@ namespace ItUniver.Calc.DB.Repositories
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public UserItem FindByName(string name)
+        public UserItem FindByLogin(string login)
         {
-            return new UserItem();
+            // TODO: When no user found
+            var result = base.ReadData($"Login='{login}'");
+
+            return result.FirstOrDefault();
         }
     }
 }
