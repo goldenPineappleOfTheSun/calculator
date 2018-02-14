@@ -1,4 +1,5 @@
-﻿using ItUniver.Calc.DB.Repositories;
+﻿using ItUniver.Calc.DB.Models;
+using ItUniver.Calc.DB.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,26 @@ namespace WebCalc.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Registration(RegistrationModel model)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            AddToUsers(model.Login, model.Password, model.Name, model.BirthDay);
+            FormsAuthentication.SetAuthCookie(model.Login, true);
+            return RedirectToAction("Index", "Calc");
+
+            return View();
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Login(LoginModel model)
@@ -47,6 +68,17 @@ namespace WebCalc.Controllers
         {
             FormsAuthentication.SignOut();
             FormsAuthentication.RedirectToLoginPage();
+        }
+
+        private void AddToUsers(string login, string password, string Name, DateTime birth)
+        {
+            var item = new UserItem();
+            item.Login = login;
+            item.Name = Name;
+            item.Password = password;
+            item.BirthDay = birth;
+
+            Users.Save(item);
         }
     }
 }

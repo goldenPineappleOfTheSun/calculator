@@ -16,7 +16,7 @@ namespace ItUniver.Calc.DB.Repositories
 
         public OperationItem FindByName(string name)
         {
-            var result = base.ReadData().Where(i => i.Name == name);
+            var result = base.ReadData($"Name='{name}'");
 
             return result.First();
         }

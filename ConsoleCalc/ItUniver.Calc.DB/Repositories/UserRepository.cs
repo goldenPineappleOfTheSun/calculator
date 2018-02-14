@@ -22,10 +22,11 @@ namespace ItUniver.Calc.DB.Repositories
         /// <returns></returns>
         public bool Check(string login, string password)
         {
-            // TODO: Make it better
-            return GetAll().Any(u => u.Login == login && u.Password == password);
+            var count = base.ReadData($"Login='{login}' AND Password='{password}'")
+                .Count();
+            var result = (count > 0) ? true : false;
 
-            return true;
+            return result;
         }
 
         /// <summary>

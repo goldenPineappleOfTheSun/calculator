@@ -112,9 +112,14 @@ namespace ItUniver.Calc.DB.Repositories
 
         protected IEnumerable<T> ReadData()
         {
+            return ReadData(null);
+        }
+
+        protected IEnumerable<T> ReadData(string where)
+        {
             var items = new List<T>();
 
-            var queryString = $"SELECT * FROM [dbo].[{tableName}]";
+            var queryString = $"SELECT * FROM [dbo].[{tableName}]" + (where == null ? "" : $" WHERE {where}") ;
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -138,9 +143,12 @@ namespace ItUniver.Calc.DB.Repositories
         {
             var obj = Activator.CreateInstance<T>();
 
+            //record.
+
             var tclass = typeof(T);
             var props = tclass.GetProperties();
 
+            // TODO: при запросе не с * - ошибка :(
             foreach (var prop in props)
             {
                 var ind = record.GetOrdinal(prop.Name);
@@ -151,6 +159,7 @@ namespace ItUniver.Calc.DB.Repositories
                     prop.SetValue(obj, value);
                 }
             }
+
             return obj;
         }
 
