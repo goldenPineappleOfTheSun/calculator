@@ -8,6 +8,7 @@ using WebCalc.Models;
 
 namespace WebCalc.Controllers
 {
+    [Authorize]
     public class CalcController : Controller
     {
         // GET: Calc

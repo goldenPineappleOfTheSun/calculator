@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body style="background: #e4cf29;">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,6 +22,12 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("История", "Index", "History")</li>
                     <li>@Html.ActionLink("Операции", "Index", "Operation")</li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @User.Identity.Name;
+                        <li>@Html.ActionLink("Выйти", "Logout", "Account")</li>
+                    }
                 </ul>
             </div>
         </div>

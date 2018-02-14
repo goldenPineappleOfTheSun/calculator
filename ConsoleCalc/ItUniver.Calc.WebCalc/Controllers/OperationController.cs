@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace WebCalc.Controllers
 {
+    [Authorize]
     public class OperationController : Controller
     {
         // GET: Operation
