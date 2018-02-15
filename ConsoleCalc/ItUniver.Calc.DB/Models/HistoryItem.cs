@@ -8,25 +8,16 @@ namespace ItUniver.Calc.DB.Models
 {
     public class HistoryItem : IHistoryItem
     {
-        public long Id { get; set; }
+        public virtual long Id { get; set; }
 
-        public long Operation { get; set; }
+        public virtual long Operation { get; set; }
 
-        public long UserId { get; set; }
+        public virtual string Args { get; set; }
 
-        public string Args { get; set; }
+        public virtual double? Result { get; set; }
 
-        public double? Result { get; set; }
+        public virtual DateTime ExecDate { get; set; }
 
-        public DateTime ExecDate { get; set; }
-
-        /*public HistoryItem(long id, string args, long op, double result, DateTime date)
-        {
-            Id = id;
-            Args = args;
-            Operation = op;
-            Result = result;
-            ExecDate = date;
-        }*/
+        public virtual UserItem UserId { get; set; }
     }
 }

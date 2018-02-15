@@ -14,11 +14,20 @@ namespace ItUniver.Calc.DB.Repositories
         {
         }
 
-        public IEnumerable<HistoryItem> FindByUserLogin(long user)
+        public IEnumerable<HistoryItem> FindByUser(long user)
         {
             var result = base.ReadData($"UserId='{user}'");
 
             return result;
+        }
+
+        public IEnumerable<HistoryItem> FindByUserLogin(string login)
+        {
+            var userRep = new UserRepository();
+
+            var user = userRep.GetByLogin(login);
+
+            return GetAll($"[Author] = {user.Id}");
         }
     }
 }

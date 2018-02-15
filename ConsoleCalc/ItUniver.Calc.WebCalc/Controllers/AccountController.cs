@@ -13,12 +13,6 @@ namespace WebCalc.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        //private UserRepository Users { get; set; }
-
-        /*public AccountController()
-        {
-            Users = new UserRepository("User");
-        }*/
 
         [AllowAnonymous]
         public ActionResult Login()
@@ -39,9 +33,16 @@ namespace WebCalc.Controllers
             if (!ModelState.IsValid)
                 return View();
 
-            DbHelper.AddToUsers(model.Login, model.Password, model.Name, model.BirthDay);
-            FormsAuthentication.SetAuthCookie(model.Login, true);
-            return RedirectToAction("Index", "Calc");
+            if (DbHelper.Users.GetByLogin(model.Login) == null)
+            {
+                DbHelper.AddToUsers(model.Login, model.Password, model.Name, model.BirthDay);
+                FormsAuthentication.SetAuthCookie(model.Login, true);
+                return RedirectToAction("Index", "Calc");
+            }
+            else
+            {
+                ModelState.AddModelError("Login", "Придумайте другое имя. Это уже занято");
+            }
 
             return View();
         }

@@ -23,6 +23,10 @@ namespace WebCalc.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "!!!")]
         public string Name { get; set; }
 
+        [Display(Name = "Пол")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "!!!")]
+        public bool? Sex { get; set; }
+
         [Display(Name = "Дата рождения")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "!!!")]
         public DateTime BirthDay { get; set; }

@@ -1,5 +1,7 @@
 ﻿using ItUniver.Calc.DB.Models;
+using ItUniver.Calc.DB.NH.Repositories;
 using ItUniver.Calc.DB.Repositories;
+using ITUniver.Calc.DB.NH.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,9 @@ namespace WebCalc
     {
         // TODO: Актуализировать базу операций
 
-        private static HistoryRepository History = new HistoryRepository("History");
+        private static NhHistoryRepository History = new NhHistoryRepository();
         public static OperationRepository Operations = new OperationRepository("Operation");
-        public static UserRepository Users = new UserRepository("User");
+        public static NhUserRepository Users = new NhUserRepository();
 
         public static OperationItem FindOperation(long id)
         {
@@ -30,7 +32,7 @@ namespace WebCalc
             var item = new HistoryItem();
             //TODO: вычислить ид операции
             item.Operation = Operations.FindByName(oper).Id;
-            item.UserId = Users.FindByLogin(user).Id;
+            item.UserId = Users.GetByLogin(user);
             item.Args = string.Join(" ", args);
             item.Result = result;
             item.ExecDate = DateTime.Now;
@@ -45,8 +47,7 @@ namespace WebCalc
 
         public static IList<HistoryItem> GetUserHistoryItems(string login)
         {
-            var user = Users.FindByLogin(login).Id;
-            return History.FindByUserLogin(user).ToList();
+            return History.FindByUserLogin(login).ToList();
         }
 
         public static void AddToOperations(string name, string owner, int argsCount)

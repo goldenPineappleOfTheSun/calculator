@@ -1,4 +1,5 @@
 ﻿using ItUniver.Calc.DB.Models;
+using ITUniver.Calc.DB.NH.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,8 +9,12 @@ using System.Threading.Tasks;
 
 namespace ItUniver.Calc.DB.Repositories
 {
-    public class UserRepository : BaseRepository<UserItem>
+    public class UserRepository : BaseRepository<UserItem>, IUserRepository
     {
+        public UserRepository()
+        {
+        }
+
         public UserRepository(string tableName) : base(tableName)
         {
         }
@@ -34,7 +39,7 @@ namespace ItUniver.Calc.DB.Repositories
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public UserItem FindByLogin(string login)
+        public UserItem GetByLogin(string login)
         {
             // TODO: When no user found
             var result = base.ReadData($"Login='{login}'");

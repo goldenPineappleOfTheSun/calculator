@@ -32,6 +32,10 @@
                         @User.Identity.Name;
                         <li>@Html.ActionLink("Выйти", "Logout", "Account")</li>
                     }
+                    else
+                    {
+                        <li>@Html.ActionLink("Зарегистрироваться", "Registration", "Account")</li>
+                    }
                 </ul>
             </div>
         </div>

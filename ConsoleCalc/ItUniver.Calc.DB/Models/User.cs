@@ -1,12 +1,13 @@
-﻿using System;
+﻿using ITUniver.Calc.DB.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ItUniver.Calc.DB.Models
+namespace ITUniver.Calc.DB.Models
 {
-    public class UserItem : IEntity
+    public class User : IEntity
     {
         public virtual long Id { get; set; }
 

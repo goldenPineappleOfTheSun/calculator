@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="ItUniver.Calc.DB.Models" assembly="ItUniver.Calc.DB">
+
+  <class name="UserItem" table="[User]">
+
+    <id name="Id">
+      <generator class="native" />
+    </id>
+    <property name="Name"/>
+    <property name="Login"/>
+    <property name="Password"/>
+    <property name="Sex" />
+    <property name="BirthDay" />
+
+    <property name="Status" />
+
+    <set name="History" inverse="true" lazy="true">
+      <key column="UserId"/>
+      <one-to-many class="HistoryItem"/>
+    </set>
+
+
+  </class>
+
+</hibernate-mapping>

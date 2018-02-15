@@ -103,6 +103,11 @@ namespace ItUniver.Calc.DB.Repositories
             }
         }
 
+        public IEnumerable<T> GetAll(string condition)
+        {
+            return ReadData(condition);
+        }
+
         public IEnumerable<T> GetAll()
         {
             return ReadData();

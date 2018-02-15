@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+    namespace="ItUniver.Calc.DB.Models" assembly="ItUniver.Calc.DB">
+
+  <class name="HistoryItem" table="[History]">
+
+    <id name="Id">
+      <generator class="native" />
+    </id>
+    <property name="Operation"/>
+    <property name="Args"/>
+    <property name="Result"/>
+    <property name="ExecDate" />
+
+    <many-to-one name="UserId" class="UserItem" lazy="false" />
+
+  </class>
+
+</hibernate-mapping>

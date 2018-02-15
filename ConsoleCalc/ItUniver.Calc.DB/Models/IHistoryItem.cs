@@ -10,7 +10,7 @@ namespace ItUniver.Calc.DB.Models
     {
         long Operation { get; set; }
 
-        long UserId { get; set; }
+        UserItem UserId { get; set; }
 
         string Args { get; set; }
 
