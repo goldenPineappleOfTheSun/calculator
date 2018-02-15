@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebCalc.Models;
+using System.Diagnostics;
+using System.Threading;
 
 namespace WebCalc.Controllers
 {
@@ -36,7 +38,13 @@ namespace WebCalc.Controllers
         {
             var calc = new Calculator();
 
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             model.Result = calc.Exec(model.Operation, model.Args.ToArray());
+
+            stopWatch.Stop();
+            var speed = stopWatch.ElapsedMilliseconds;
 
             // TODO: закжшировать список операций
             // TODO: сохранять последнюю операцию
@@ -54,7 +62,7 @@ namespace WebCalc.Controllers
             model.AllOperations = operations;
 
             if (model.Operation != null && model.Args != null)
-                DbHelper.AddToHistory(model.Operation, User.Identity.Name, model.Args.ToArray(), (double)model.Result);
+                DbHelper.AddToHistory(model.Operation, User.Identity.Name, model.Args.ToArray(), (double)model.Result, speed);
 
             return View(model);
         }

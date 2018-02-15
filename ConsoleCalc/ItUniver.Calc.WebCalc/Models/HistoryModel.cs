@@ -14,5 +14,7 @@ namespace WebCalc.Models
         public IEnumerable<double> Args { get; set; }
 
         public double? Result { get; set; }
+
+        public double? ExecSpeed { get; set; }
     }
 }

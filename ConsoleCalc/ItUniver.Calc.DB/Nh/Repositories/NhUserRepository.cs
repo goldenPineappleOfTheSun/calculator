@@ -15,7 +15,7 @@ namespace ItUniver.Calc.DB.NH.Repositories
 
             return session
                 .QueryOver<UserItem>()
-                .And(u => u.Login == login && u.Password == password)
+                .And(u => u.Login == login && u.Password == password && u.Status == UserStatus.Active)
                 .RowCount() > 0;
 
         }

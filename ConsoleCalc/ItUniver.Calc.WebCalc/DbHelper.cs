@@ -27,7 +27,7 @@ namespace WebCalc
             return 2;
         }
 
-        public static void AddToHistory(string oper, string user, double[] args, double result)
+        public static void AddToHistory(string oper, string user, double[] args, double result, double speed)
         {
             var item = new HistoryItem();
             //TODO: вычислить ид операции
@@ -35,6 +35,7 @@ namespace WebCalc
             item.UserId = Users.GetByLogin(user);
             item.Args = string.Join(" ", args);
             item.Result = result;
+            item.ExecSpeed = speed;
             item.ExecDate = DateTime.Now;
 
             History.Save(item);

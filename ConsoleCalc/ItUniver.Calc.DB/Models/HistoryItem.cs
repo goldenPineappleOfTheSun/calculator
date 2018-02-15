@@ -18,6 +18,8 @@ namespace ItUniver.Calc.DB.Models
 
         public virtual DateTime ExecDate { get; set; }
 
+        public virtual double ExecSpeed { get; set; }
+
         public virtual UserItem UserId { get; set; }
     }
 }

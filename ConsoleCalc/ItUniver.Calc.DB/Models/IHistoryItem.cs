@@ -17,5 +17,7 @@ namespace ItUniver.Calc.DB.Models
         double? Result { get; set; }
 
         DateTime ExecDate { get; set; }
+
+        double ExecSpeed { get; set; }
     }
 }

@@ -11,6 +11,7 @@
     <property name="Args"/>
     <property name="Result"/>
     <property name="ExecDate" />
+    <property name="ExecSpeed" />
 
     <many-to-one name="UserId" class="UserItem" lazy="false" />
 

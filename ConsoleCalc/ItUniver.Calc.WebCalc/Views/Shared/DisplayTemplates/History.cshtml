@@ -3,6 +3,6 @@
     ItUniver.Calc.DB.Models.OperationItem operation = DbHelper.FindOperation(Model.Operation);
 
 <div class="hustory">
-    <div class="operation">@(operation.Name) ( @(Model.Args) ) = </div><div class="result">@(Model.Result)</div>
+    <div class="operation">@(operation.Name) ( @(Model.Args) ) = </div><div class="result">@(Model.Result)</div><div class="speed">Выполнилось за: @(Model.ExecSpeed)мс</div>
 </div>
 }
