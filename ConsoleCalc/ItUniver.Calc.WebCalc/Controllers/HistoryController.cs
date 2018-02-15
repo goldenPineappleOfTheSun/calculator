@@ -13,8 +13,7 @@ namespace WebCalc.Controllers
         // GET: History
         public ActionResult Index()
         {
-            var history = DbHelper.GetUserHistoryItems(User.Identity.Name)
-                .OrderByDescending(o => o.ExecDate);
+            var history = DbHelper.Users.GetByLogin(User.Identity.Name).History;
 
             return View(history);
         }

@@ -44,11 +44,11 @@ namespace WebCalc
         {
             return History.GetAll().ToList();
         }
-
+        /*
         public static IList<HistoryItem> GetUserHistoryItems(string login)
         {
             return History.FindByUserLogin(login).ToList();
-        }
+        }*/
 
         public static void AddToOperations(string name, string owner, int argsCount)
         {
